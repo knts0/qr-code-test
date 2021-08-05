@@ -8,7 +8,10 @@ ThisBuild / organizationName := "example"
 lazy val root = (project in file("."))
   .settings(
     name := "qr-code-test",
-    libraryDependencies += scalaTest % Test
+    libraryDependencies += scalaTest % Test,
+
+    libraryDependencies += "com.google.zxing" % "core" % "3.4.1",
+    libraryDependencies += "com.google.zxing" % "javase" % "3.4.1",
   )
 
 // Uncomment the following for publishing to Sonatype.
