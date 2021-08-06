@@ -12,6 +12,10 @@ lazy val root = (project in file("."))
 
     libraryDependencies += "com.google.zxing" % "core" % "3.4.1",
     libraryDependencies += "com.google.zxing" % "javase" % "3.4.1",
+
+    libraryDependencies += "org.apache.poi" % "poi" % "3.17",
+    libraryDependencies += "org.apache.poi" % "poi-ooxml" % "3.17",
+    libraryDependencies += "org.apache.poi" % "ooxml-schemas" % "1.3",
   )
 
 // Uncomment the following for publishing to Sonatype.
