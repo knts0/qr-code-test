@@ -53,6 +53,9 @@ object Hello extends Greeting with App {
 
   /** set anchor type of image */
   anchor.setAnchorType(ClientAnchor.AnchorType.MOVE_AND_RESIZE)
+//  anchor.setAnchorType(ClientAnchor.AnchorType.MOVE_DONT_RESIZE)
+//  anchor.setAnchorType(ClientAnchor.AnchorType.DONT_MOVE_DO_RESIZE)
+//  anchor.setAnchorType(ClientAnchor.AnchorType.DONT_MOVE_AND_RESIZE)
 
   /** create picture */
   patriarch.createPicture(anchor, pictureIndex)
