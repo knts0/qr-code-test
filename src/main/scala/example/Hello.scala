@@ -5,7 +5,7 @@ import com.google.zxing.client.j2se.{MatrixToImageConfig, MatrixToImageWriter}
 import com.google.zxing.qrcode.QRCodeWriter
 import org.apache.poi.ss.usermodel.{ClientAnchor, Workbook}
 import org.apache.poi.util.{IOUtils, Units}
-import org.apache.poi.xssf.usermodel.{XSSFDrawing, XSSFWorkbook}
+import org.apache.poi.xssf.usermodel.{XSSFClientAnchor, XSSFDrawing, XSSFWorkbook}
 
 import java.io.{ByteArrayInputStream, ByteArrayOutputStream, FileOutputStream, OutputStream}
 import javax.imageio.ImageIO
@@ -52,7 +52,7 @@ object Hello extends Greeting with App {
   val patriarch: XSSFDrawing = sheet.createDrawingPatriarch()
 
   /** get client anchor instance */
-  val anchor = book.getCreationHelper().createClientAnchor()
+  val anchor: XSSFClientAnchor = book.getCreationHelper().createClientAnchor()
 
   /** set position & size */
   anchor.setCol1(1)
@@ -65,6 +65,9 @@ object Hello extends Greeting with App {
 //  anchor.setDy1(Units.EMU_PER_PIXEL * 10)
 //  anchor.setDx2(Units.EMU_PER_PIXEL * -10)
 //  anchor.setDy2(Units.EMU_PER_PIXEL * -10)
+
+  /** simpler code (set anchor offset & position) */
+   val anchor: XSSFClientAnchor = patriarch.createAnchor(dx1, dy1, dx2, dy2, col1, row1, col2, row2)
 
   /** set anchor type of image */
   anchor.setAnchorType(ClientAnchor.AnchorType.MOVE_AND_RESIZE)
