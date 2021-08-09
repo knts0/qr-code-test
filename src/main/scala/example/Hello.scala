@@ -33,6 +33,21 @@ object Hello extends Greeting with App {
   /** add image to workbook */
   val pictureIndex = book.addPicture(bytes, Workbook.PICTURE_TYPE_PNG)
 
+  // Extended windows meta file
+  // Workbook.PICTURE_TYPE_EMF
+
+  // Windows Meta File
+  // Workbook.PICTURE_TYPE_WMF
+
+  // Mac PICT
+  // Workbook.PICTURE_TYPE_PICT
+
+  // JPEG
+  // Workbook.PICTURE_TYPE_JPEG
+
+  // Device independent bitmap
+  // Workbook.PICTURE_TYPE_DIB
+
   /** get drawing instance */
   val patriarch = sheet.createDrawingPatriarch()
 
