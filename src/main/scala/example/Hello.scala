@@ -5,7 +5,7 @@ import com.google.zxing.client.j2se.{MatrixToImageConfig, MatrixToImageWriter}
 import com.google.zxing.qrcode.QRCodeWriter
 import org.apache.poi.ss.usermodel.{ClientAnchor, Workbook}
 import org.apache.poi.util.{IOUtils, Units}
-import org.apache.poi.xssf.usermodel.XSSFWorkbook
+import org.apache.poi.xssf.usermodel.{XSSFDrawing, XSSFWorkbook}
 
 import java.io.{ByteArrayInputStream, ByteArrayOutputStream, FileOutputStream, OutputStream}
 import javax.imageio.ImageIO
@@ -49,7 +49,7 @@ object Hello extends Greeting with App {
   // Workbook.PICTURE_TYPE_DIB
 
   /** get drawing instance */
-  val patriarch = sheet.createDrawingPatriarch()
+  val patriarch: XSSFDrawing = sheet.createDrawingPatriarch()
 
   /** get client anchor instance */
   val anchor = book.getCreationHelper().createClientAnchor()
