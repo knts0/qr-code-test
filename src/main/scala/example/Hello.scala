@@ -67,7 +67,7 @@ object Hello extends Greeting with App {
 //  anchor.setDy2(Units.EMU_PER_PIXEL * -10)
 
   /** simpler code (set anchor offset & position) */
-   val anchor: XSSFClientAnchor = patriarch.createAnchor(dx1, dy1, dx2, dy2, col1, row1, col2, row2)
+//   val anchor: XSSFClientAnchor = patriarch.createAnchor(dx1, dy1, dx2, dy2, col1, row1, col2, row2)
 
   /** set anchor type of image */
   anchor.setAnchorType(ClientAnchor.AnchorType.MOVE_AND_RESIZE)
