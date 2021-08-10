@@ -95,7 +95,7 @@ trait Sample {
     patriarch.createPicture(anchor, pictureIndex)
 
     /** write excel file */
-    val excelOutputStream = new FileOutputStream("/Users/kana/Downloads/qr_code_test.xlsx")
+    val excelOutputStream = new FileOutputStream("/tmp/qr_code_test.xlsx")
     book.write(excelOutputStream)
     excelOutputStream.close()
   }
