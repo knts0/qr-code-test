@@ -4,13 +4,9 @@ import com.google.zxing.BarcodeFormat
 import com.google.zxing.client.j2se.{MatrixToImageConfig, MatrixToImageWriter}
 import com.google.zxing.qrcode.QRCodeWriter
 import org.apache.poi.ss.usermodel.{ClientAnchor, Workbook}
-import org.apache.poi.util.{IOUtils, Units}
 import org.apache.poi.xssf.usermodel.{XSSFClientAnchor, XSSFDrawing, XSSFWorkbook}
 
-import java.io.{ByteArrayInputStream, ByteArrayOutputStream, FileOutputStream, OutputStream}
-import javax.imageio.ImageIO
-import java.nio.file.Files
-import java.nio.file.Paths
+import java.io.{ByteArrayOutputStream, FileOutputStream}
 
 
 object Hello extends Greeting with App {
