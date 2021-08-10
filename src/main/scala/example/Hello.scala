@@ -64,9 +64,19 @@ trait Sample {
      */
     val pictureIndex = book.addPicture(bytes, Workbook.PICTURE_TYPE_PNG)
 
-    /** get drawing instance */
-    val patriarch: XSSFDrawing = sheet.createDrawingPatriarch()
+    val anchor: XSSFClientAnchor = createAnchor(book)
 
+    /** get drawing instance and create picture */
+    val patriarch: XSSFDrawing = sheet.createDrawingPatriarch()
+    patriarch.createPicture(anchor, pictureIndex)
+
+    /** write excel file */
+    val excelOutputStream = new FileOutputStream("/tmp/qr_code_test.xlsx")
+    book.write(excelOutputStream)
+    excelOutputStream.close()
+  }
+
+  private def createAnchor(book: XSSFWorkbook) = {
     /** get client anchor instance */
     val anchor: XSSFClientAnchor = book.getCreationHelper().createClientAnchor()
 
@@ -76,7 +86,7 @@ trait Sample {
     anchor.setCol2(6)
     anchor.setRow2(6)
 
-    /** set offset  */
+    /** set offset */
     //  anchor.setDx1(Units.EMU_PER_PIXEL * 10)
     //  anchor.setDy1(Units.EMU_PER_PIXEL * 10)
     //  anchor.setDx2(Units.EMU_PER_PIXEL * -10)
@@ -85,18 +95,17 @@ trait Sample {
     /** simpler code (set anchor offset & position) */
     //   val anchor: XSSFClientAnchor = patriarch.createAnchor(dx1, dy1, dx2, dy2, col1, row1, col2, row2)
 
-    /** set anchor type of image */
+    /**
+     * set anchor type of image
+     *
+     * anchor type options
+     * - MOVE_AND_RESIZE
+     * - MOVE_DONT_RESIZE
+     * - DONT_MOVE_DO_RESIZE
+     * - DONT_MOVE_AND_RESIZE
+     */
     anchor.setAnchorType(ClientAnchor.AnchorType.MOVE_AND_RESIZE)
-    //  anchor.setAnchorType(ClientAnchor.AnchorType.MOVE_DONT_RESIZE)
-    //  anchor.setAnchorType(ClientAnchor.AnchorType.DONT_MOVE_DO_RESIZE)
-    //  anchor.setAnchorType(ClientAnchor.AnchorType.DONT_MOVE_AND_RESIZE)
 
-    /** create picture */
-    patriarch.createPicture(anchor, pictureIndex)
-
-    /** write excel file */
-    val excelOutputStream = new FileOutputStream("/tmp/qr_code_test.xlsx")
-    book.write(excelOutputStream)
-    excelOutputStream.close()
+    anchor
   }
 }
