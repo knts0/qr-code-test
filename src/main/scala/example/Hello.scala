@@ -1,12 +1,14 @@
 package example
 
-import com.google.zxing.BarcodeFormat
+import com.google.zxing.{BarcodeFormat, EncodeHintType}
 import com.google.zxing.client.j2se.{MatrixToImageConfig, MatrixToImageWriter}
 import com.google.zxing.qrcode.QRCodeWriter
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel
 import org.apache.poi.ss.usermodel.{ClientAnchor, Workbook}
 import org.apache.poi.xssf.usermodel.{XSSFClientAnchor, XSSFDrawing, XSSFWorkbook}
 
 import java.io.{ByteArrayOutputStream, FileOutputStream}
+import java.util
 
 
 object Hello extends Sample with App {
@@ -22,12 +24,26 @@ trait Sample {
     /** set your content */
     val content = "https://www.google.com/"
 
+    /** set hints */
+    val hints = new util.EnumMap[EncodeHintType, AnyRef](classOf[EncodeHintType])
+
+    /** error correction */
+    val level = ErrorCorrectionLevel.M
+    hints.put(EncodeHintType.ERROR_CORRECTION, level)
+
+    /** character set */
+    hints.put(EncodeHintType.CHARACTER_SET, "ISO-8859-1")
+
+    /** margin */
+    hints.put(EncodeHintType.MARGIN, 4)
+
     /** convert your content to QR code matrix */
     val matrix = new QRCodeWriter().encode(
       content,
       BarcodeFormat.QR_CODE,
       320,
-      320
+      320,
+      hints
     )
 
     /** write qr code to output stream */
